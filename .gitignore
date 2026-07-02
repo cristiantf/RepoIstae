@@ -1,0 +1,67 @@
+# ========================
+# Repositorio Digital ISTAE
+# .gitignore
+# ========================
+
+# Variables de entorno (NUNCA subir al repo)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Dependencias PHP (se reinstalan con composer install)
+vendor/
+
+# Dependencias Node (se reinstalan con npm install)
+node_modules/
+
+# Archivos subidos por usuarios (documentos PDF, logos)
+public/uploads/
+storage/app/public/uploads/
+
+# Cache de Laravel
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+bootstrap/cache/
+
+# Logs
+storage/logs/
+*.log
+
+# Compilados y builds
+public/hot
+public/build/
+public/mix-manifest.json
+
+# PHPUnit
+.phpunit.cache
+.phpunit.result.cache
+
+# IDE y editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Composer
+composer.lock
+
+# PHP CS Fixer
+.php-cs-fixer.cache
+.php_cs.cache
+
+# Configuración local de XAMPP
+.htaccess.local
+
+# Backups de BD
+*.sql.bak
+database/backups/
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
