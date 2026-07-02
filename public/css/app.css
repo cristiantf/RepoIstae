@@ -1,0 +1,286 @@
+:root {
+    /* ISTAE Brand Colors */
+    --primary-blue: #0A192F;
+    --secondary-blue: #112240;
+    --accent-red: #C8102E;
+    --accent-red-hover: #A00D25;
+    
+    /* Neutrals */
+    --light-bg: #F8FAFC;
+    --white: #FFFFFF;
+    --text-main: #334155;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.05);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* Navbar (Glassmorphism) */
+.navbar-custom {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--glass-shadow);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 800;
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.navbar-custom .navbar-brand span {
+    color: var(--accent-red);
+}
+
+.navbar-custom .nav-link {
+    font-weight: 500;
+    color: var(--text-main);
+    transition: color 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--accent-red);
+    background-color: rgba(200, 16, 46, 0.05);
+}
+
+/* Buttons */
+.btn-primary-custom {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    border: none;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(10, 25, 47, 0.25);
+    color: var(--white);
+}
+
+.btn-accent-custom {
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-red-hover));
+    color: var(--white);
+    border: none;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-accent-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 16, 46, 0.3);
+    color: var(--white);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(200,16,46,0.15) 0%, rgba(200,16,46,0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero-section * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+}
+
+/* Search Bar (Hero) */
+.search-box-wrapper {
+    background: var(--white);
+    padding: 0.5rem;
+    border-radius: 12px;
+    display: flex;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 700px;
+}
+
+.search-box-wrapper input {
+    border: none;
+    box-shadow: none;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+}
+
+.search-box-wrapper input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.search-box-wrapper button {
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+}
+
+/* Cards (Glassmorphism & Hover) */
+.card-custom {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.1);
+    border-color: rgba(10, 25, 47, 0.1);
+}
+
+.card-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.bg-blue-light {
+    background-color: rgba(10, 25, 47, 0.05);
+    color: var(--primary-blue);
+}
+
+.bg-red-light {
+    background-color: rgba(200, 16, 46, 0.05);
+    color: var(--accent-red);
+}
+
+/* Auth Cards */
+.auth-wrapper {
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--light-bg) 0%, #E2E8F0 100%);
+}
+
+.auth-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.auth-header {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.auth-body {
+    padding: 2.5rem;
+}
+
+.form-control-custom {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    background-color: #F8FAFC;
+}
+
+.form-control-custom:focus {
+    background-color: var(--white);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 3rem 0 1.5rem;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--white);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
