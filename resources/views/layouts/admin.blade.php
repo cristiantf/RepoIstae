@@ -38,26 +38,33 @@
         <hr class="border-secondary">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" aria-current="page">
                     <i class="bi bi-speedometer2 me-2"></i> Dashboard
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-people me-2"></i> Usuarios
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
+                <a href="{{ route('documentos.index') }}" class="nav-link {{ request()->routeIs('documentos.*') ? 'active' : '' }}">
                     <i class="bi bi-file-earmark-text me-2"></i> Documentos
                 </a>
             </li>
+            @if(in_array(Auth::user()->rol, ['admin', 'bibliotecario']))
             <li>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.comunidades.index') }}" class="nav-link {{ request()->routeIs('admin.comunidades.*') ? 'active' : '' }}">
                     <i class="bi bi-diagram-3 me-2"></i> Comunidades
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admin.colecciones.index') }}" class="nav-link {{ request()->routeIs('admin.colecciones.*') ? 'active' : '' }}">
+                    <i class="bi bi-collection me-2"></i> Colecciones
+                </a>
+            </li>
+            @endif
             @if(Auth::user()->rol === 'admin')
+            <li>
+                <a href="{{ route('admin.usuarios.index') }}" class="nav-link {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}">
+                    <i class="bi bi-people me-2"></i> Usuarios
+                </a>
+            </li>
             <li>
                 <hr class="border-secondary">
             </li>
