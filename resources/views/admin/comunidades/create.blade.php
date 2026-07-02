@@ -34,7 +34,7 @@
                 
                 <div class="col-12">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" checked>
+                        <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" value="1" checked>
                         <label class="form-check-label fw-medium" for="activo">Comunidad Activa</label>
                     </div>
                 </div>

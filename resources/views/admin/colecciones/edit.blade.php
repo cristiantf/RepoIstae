@@ -47,7 +47,7 @@
                 
                 <div class="col-md-6 d-flex align-items-center mt-auto pb-2">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" {{ $coleccione->activo ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" value="1" {{ $coleccione->activo ? 'checked' : '' }}>
                         <label class="form-check-label fw-medium" for="activo">Colección Activa</label>
                     </div>
                 </div>

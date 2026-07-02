@@ -98,7 +98,7 @@
                                         </div>
                                         
                                         <div class="form-check form-switch mt-4">
-                                            <input class="form-check-input" type="checkbox" role="switch" id="activo{{ $usuario->id }}" name="activo" {{ $usuario->activo ? 'checked' : '' }}>
+                                            <input class="form-check-input" type="checkbox" role="switch" id="activo{{ $usuario->id }}" name="activo" value="1" {{ $usuario->activo ? 'checked' : '' }}>
                                             <label class="form-check-label fw-medium" for="activo{{ $usuario->id }}">Permitir inicio de sesión (Activo)</label>
                                         </div>
                                     </div>
