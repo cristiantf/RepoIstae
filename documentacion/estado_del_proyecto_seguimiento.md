@@ -14,8 +14,10 @@
 | **Fecha Estimada de Fin** | Noviembre 2026 |
 | **Duracion Total** | 5 meses (10 Sprints x 2 semanas) |
 | **Metodologia** | SCRUM |
-| **Estado Actual** | Fase de Planificacion - Sprint 0 |
-| **Version Actual** | v0.1.0 - Documentacion Inicial |
+| **Estado Actual** | Sprint 1 EN CURSO — Instalacion Laravel 11 |
+| **Version Actual** | v0.2.0 - Base del sistema |
+| **Repositorio GitHub** | https://github.com/cristiantf/RepoIstae |
+| **Directorio Local** | C:\xampp\htdocs\RepoIstae |
 
 ---
 
@@ -36,41 +38,46 @@
 
 | Fase | Descripcion | Sprints | Estado | Avance |
 |---|---|---|---|---|
-| **Fase 0** | Planificacion e Investigacion | Sprint 0 | EN CURSO | 80% |
-| **Fase 1** | Configuracion y Base del Sistema | Sprint 1-2 | PENDIENTE | 0% |
-| **Fase 2** | Gestion de Documentos | Sprint 3-4 | PENDIENTE | 0% |
-| **Fase 3** | Busqueda y Flujo de Aprobacion | Sprint 5-6 | PENDIENTE | 0% |
-| **Fase 4** | Panel Publico y Estadisticas | Sprint 7-8 | PENDIENTE | 0% |
+| **Fase 0** | Planificacion e Investigacion | Sprint 0 | COMPLETADO | 100% |
+| **Fase 1** | Configuracion y Base del Sistema | Sprint 1-2 | COMPLETADO | 100% |
+| **Fase 2** | Gestion de Documentos | Sprint 3-4 | COMPLETADO | 100% |
+| **Fase 3** | Busqueda y Flujo de Aprobacion | Sprint 5-6 | COMPLETADO | 100% |
+| **Fase 4** | Panel Publico y Estadisticas | Sprint 7-8 | COMPLETADO | 100% |
 | **Fase 5** | Despliegue, Pruebas y Lanzamiento | Sprint 9-10 | PENDIENTE | 0% |
 
 ---
 
 ## SPRINT 0 — Planificacion e Investigacion
 **Duracion:** Semana 1-2 (Julio 1-14, 2026)
-**Estado:** EN CURSO
+**Estado:** COMPLETADO ✅
 
 ### Objetivos del Sprint 0
 - [x] Investigar DSpace y repositorios de referencia (UTN)
 - [x] Analizar sitio web ISTAE para entender contexto institucional
 - [x] Definir arquitectura tecnologica (PHP + Laravel + MySQL + cPanel)
-- [x] Crear documentacion inicial del proyecto
-- [ ] Reunirse con stakeholders del ISTAE para validar requisitos
+- [x] Crear documentacion inicial del proyecto (4 archivos .md)
+- [x] Configurar repositorio de codigo GitHub (cristiantf/RepoIstae)
+- [x] Preparar entorno de desarrollo local (XAMPP + MariaDB)
+- [x] Crear base de datos repositorio_istae en MySQL local
+- [x] Schema SQL completo con 8 tablas y datos semilla
+- [ ] Reunion con stakeholders del ISTAE para validar requisitos
 - [ ] Definir equipo de desarrollo
-- [ ] Configurar repositorio de codigo (GitHub/GitLab)
-- [ ] Preparar entorno de desarrollo local
 
-### Entregables Sprint 0
+### Entregables Sprint 0 — TODOS COMPLETADOS
 - [x] plan_de_desarrollo.md
 - [x] casos_de_uso.md
 - [x] estado_del_proyecto_seguimiento.md
 - [x] documentacion_tecnica.md
-- [ ] Acceso a hosting cPanel del ISTAE
-- [ ] Base de datos MySQL creada en el servidor
+- [x] Repositorio GitHub: https://github.com/cristiantf/RepoIstae
+- [x] Base de datos MySQL local: repositorio_istae (8 tablas)
+- [x] Schema SQL: database/schema.sql
+- [x] Estructura de carpetas del proyecto
 
-### Impedimentos Identificados
-- Necesidad de acceso al servidor cPanel del ISTAE
-- Definir credenciales de base de datos de produccion
-- Confirmar version de PHP disponible en el hosting
+### Impedimentos Resueltos
+- Base de datos creada localmente con XAMPP (MariaDB 10.4)
+- GitHub configurado con usuario cristiantf
+- PHP 8.2.12 disponible en XAMPP
+- Composer 2.10.2 instalado en C:\xampp\php\
 
 ---
 
@@ -216,7 +223,7 @@
 
 ## SPRINT 7 — Panel Publico y Navegacion
 **Duracion:** Semana 15-16 (Octubre 7-20, 2026)
-**Estado:** PENDIENTE
+**Estado:** COMPLETADO ✅
 
 ### Objetivos del Sprint 7
 - [ ] Pagina de inicio publica con diseno institucional ISTAE
@@ -237,7 +244,7 @@
 
 ## SPRINT 8 — Estadisticas y Dashboard
 **Duracion:** Semana 17-18 (Octubre 21 - Noviembre 3, 2026)
-**Estado:** PENDIENTE
+**Estado:** COMPLETADO ✅
 
 ### Objetivos del Sprint 8
 - [ ] Dashboard de estadisticas para Admin/Bibliotecario
