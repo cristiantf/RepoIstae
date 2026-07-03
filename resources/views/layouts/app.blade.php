@@ -36,15 +36,18 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-lg-3" role="search" action="{{ route('busqueda') }}" method="GET">
+                    <div class="input-group">
+                        <input class="form-control border-secondary text-white bg-transparent" type="search" name="q" placeholder="Buscar repositorio..." aria-label="Search" value="{{ request('q') }}">
+                        <button class="btn btn-outline-light border-secondary" type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Comunidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Búsqueda</a>
                     </li>
                 </ul>
                 

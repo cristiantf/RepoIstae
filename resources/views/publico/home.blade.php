@@ -13,10 +13,11 @@
                 <p class="hero-subtitle">Accede a tesis, artículos científicos, proyectos y documentos institucionales del Instituto Superior Tecnológico Alberto Enríquez.</p>
                 
                 <div class="search-box-wrapper animate-fade-in delay-100">
-                    <form action="#" method="GET" class="w-100 d-flex gap-2">
-                        <i class="bi bi-search text-muted fs-5 align-self-center ms-2"></i>
-                        <input type="text" name="q" class="flex-grow-1 border-0 shadow-none focus-ring focus-ring-light" placeholder="Buscar por título, autor, palabras clave..." style="outline: none;">
-                        <button type="submit" class="btn btn-accent-custom">Buscar</button>
+                    <form class="d-flex w-100 mx-auto" action="{{ route('busqueda') }}" method="GET">
+                        <div class="input-group input-group-lg shadow-sm">
+                            <input type="search" name="q" class="form-control border-0" placeholder="Buscar por título, autor o palabra clave..." aria-label="Buscar">
+                            <button class="btn btn-accent-custom px-4" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
                     </form>
                 </div>
                 

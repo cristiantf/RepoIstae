@@ -7,7 +7,11 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PublicoController;
 
 // Rutas Públicas
-Route::get('/', [PublicoController::class, 'home'])->name('home');
+Route::get('/', [\App\Http\Controllers\PublicoController::class, 'home'])->name('home');
+
+// Módulo de Búsqueda Pública
+Route::get('/buscar', [\App\Http\Controllers\BusquedaController::class, 'index'])->name('busqueda');
+Route::get('/documento/{id}', [\App\Http\Controllers\BusquedaController::class, 'show'])->name('documento.publico');
 
 // Autenticación
 Route::middleware('guest')->group(function () {
