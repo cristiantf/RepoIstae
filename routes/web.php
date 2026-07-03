@@ -15,6 +15,7 @@ Route::get('/documento/{id}', [\App\Http\Controllers\BusquedaController::class, 
 
 // Módulo de Exploración y Estadísticas
 Route::get('/comunidades', [\App\Http\Controllers\ExplorarController::class, 'comunidades'])->name('comunidades');
+Route::get('/comunidad/{id}', [\App\Http\Controllers\ExplorarController::class, 'comunidad'])->name('comunidad.publica');
 Route::get('/coleccion/{id}', [\App\Http\Controllers\ExplorarController::class, 'coleccion'])->name('coleccion.publica');
 Route::get('/estadisticas', [\App\Http\Controllers\EstadisticaController::class, 'index'])->name('estadisticas');
 

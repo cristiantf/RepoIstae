@@ -7,7 +7,7 @@
             <div class="col-md-6 col-lg-5">
                 <div class="auth-card">
                     <div class="auth-header">
-                        <i class="bi bi-person-circle fs-1 mb-2 d-block"></i>
+                        <img src="{{ asset('images/logo.webp') }}" alt="Logo ISTAE" height="80" class="mb-3 rounded bg-white p-2 shadow-sm">
                         <h4 class="mb-0">Iniciar Sesión</h4>
                         <p class="mb-0 text-white-50 mt-1">Accede al Repositorio Digital ISTAE</p>
                     </div>

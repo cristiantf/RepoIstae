@@ -7,7 +7,7 @@
             <div class="col-md-8 col-lg-6">
                 <div class="auth-card">
                     <div class="auth-header">
-                        <i class="bi bi-person-plus fs-1 mb-2 d-block"></i>
+                        <img src="{{ asset('images/logo.webp') }}" alt="Logo ISTAE" height="80" class="mb-3 rounded bg-white p-2 shadow-sm">
                         <h4 class="mb-0">Crear Cuenta</h4>
                         <p class="mb-0 text-white-50 mt-1">Únete a la comunidad académica del ISTAE</p>
                     </div>

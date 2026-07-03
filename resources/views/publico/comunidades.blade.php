@@ -15,38 +15,24 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             @forelse($comunidades as $comunidad)
-            <div class="card border-0 shadow-sm rounded-4 mb-5">
-                <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
-                    <h3 class="fw-bold text-primary-custom mb-1">
-                        <i class="bi bi-diagram-3 me-2 text-danger"></i> {{ $comunidad->nombre }}
-                    </h3>
-                    @if($comunidad->descripcion)
-                    <p class="text-muted mb-0 mt-2">{{ $comunidad->descripcion }}</p>
-                    @endif
-                    <hr class="mt-4 mb-0 opacity-10">
-                </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush rounded-bottom-4">
-                        @forelse($comunidad->colecciones as $coleccion)
-                        <a href="{{ route('coleccion.publica', $coleccion->id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-4 border-light border-bottom">
-                            <div>
-                                <h5 class="fw-bold text-dark mb-1">{{ $coleccion->nombre }}</h5>
-                                @if($coleccion->descripcion)
-                                <p class="text-muted small mb-0">{{ $coleccion->descripcion }}</p>
-                                @endif
-                            </div>
-                            <span class="badge bg-primary-custom bg-opacity-10 text-primary-custom rounded-pill px-3 py-2 border border-primary border-opacity-25 shadow-sm">
-                                {{ $coleccion->documentos_count }} <span class="fw-normal">documentos</span>
-                            </span>
-                        </a>
-                        @empty
-                        <div class="p-4 text-center text-muted small">
-                            No hay colecciones activas en esta comunidad.
-                        </div>
-                        @endforelse
+            <a href="{{ route('comunidad.publica', $comunidad->id) }}" class="card border-0 shadow-sm rounded-4 mb-4 text-decoration-none transition-hover-up">
+                <div class="card-body p-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="fw-bold text-primary-custom mb-1">
+                            <i class="bi bi-diagram-3 me-2 text-danger"></i> {{ $comunidad->nombre }}
+                        </h4>
+                        @if($comunidad->descripcion)
+                        <p class="text-muted mb-0 mt-2">{{ $comunidad->descripcion }}</p>
+                        @endif
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="badge bg-light text-dark rounded-pill px-3 py-2 border">
+                            {{ $comunidad->colecciones_count }} colecciones
+                        </span>
+                        <i class="bi bi-chevron-right text-muted fs-4"></i>
                     </div>
                 </div>
-            </div>
+            </a>
             @empty
             <div class="text-center py-5">
                 <i class="bi bi-folder-x fs-1 text-muted opacity-50 mb-3 d-block"></i>
@@ -56,4 +42,9 @@
         </div>
     </div>
 </div>
+
+<style>
+.transition-hover-up { transition: all 0.3s ease; }
+.transition-hover-up:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
+</style>
 @endsection

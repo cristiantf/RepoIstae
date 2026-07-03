@@ -5,15 +5,21 @@
     <a href="{{ route('documentos.index') }}" class="text-decoration-none text-muted mb-2 d-inline-block">
         <i class="bi bi-arrow-left me-1"></i> Volver a la lista
     </a>
-    <div class="d-flex justify-content-between align-items-start">
-        <h2 class="fw-bold mb-0 text-primary-custom">{{ $documento->titulo }}</h2>
-        <div>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+        <h2 class="fw-bold mb-0 text-primary-custom text-break" style="word-break: break-word;">{{ $documento->titulo }}</h2>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            @if(auth()->user()->rol === 'admin' || auth()->user()->rol === 'bibliotecario' || auth()->user()->id === $documento->user_id)
+                <a href="{{ route('documentos.edit', $documento->id) }}" class="btn btn-sm btn-outline-primary fw-medium text-nowrap">
+                    <i class="bi bi-pencil me-1"></i> Editar Documento
+                </a>
+            @endif
+            
             @if($documento->estado == 'publicado' || $documento->estado == 'aprobado')
-                <span class="badge bg-success fs-6">Publicado</span>
+                <span class="badge bg-success fs-6 text-nowrap">Publicado</span>
             @elseif($documento->estado == 'en_revisión')
-                <span class="badge bg-warning text-dark fs-6">En Revisión</span>
+                <span class="badge bg-warning text-dark fs-6 text-nowrap">En Revisión</span>
             @else
-                <span class="badge bg-danger fs-6">Rechazado</span>
+                <span class="badge bg-danger fs-6 text-nowrap">Rechazado</span>
             @endif
         </div>
     </div>

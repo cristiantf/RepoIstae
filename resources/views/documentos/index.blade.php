@@ -17,6 +17,25 @@
 </div>
 @endif
 
+<form method="GET" action="{{ route('documentos.index') }}" class="mb-4">
+    <div class="row g-2">
+        <div class="col-md-6">
+            <input type="text" name="q" class="form-control form-control-custom" placeholder="Buscar por título o autor..." value="{{ request('q') }}">
+        </div>
+        <div class="col-md-4">
+            <select name="estado" class="form-select form-control-custom">
+                <option value="">Todos los estados</option>
+                <option value="publicado" {{ request('estado') == 'publicado' ? 'selected' : '' }}>Publicado</option>
+                <option value="en_revisión" {{ request('estado') == 'en_revisión' ? 'selected' : '' }}>En Revisión</option>
+                <option value="rechazado" {{ request('estado') == 'rechazado' ? 'selected' : '' }}>Rechazado</option>
+            </select>
+        </div>
+        <div class="col-md-2 d-grid">
+            <button type="submit" class="btn btn-primary-custom">Filtrar</button>
+        </div>
+    </div>
+</form>
+
 <div class="card-custom">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -68,5 +87,10 @@
             </table>
         </div>
     </div>
+    @if($documentos->hasPages())
+    <div class="card-footer bg-white border-top">
+        {{ $documentos->links('pagination::bootstrap-5') }}
+    </div>
+    @endif
 </div>
 @endsection

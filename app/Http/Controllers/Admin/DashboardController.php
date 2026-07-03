@@ -11,7 +11,7 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $stats = [
             'documentos_total' => Documento::count(),
@@ -20,10 +20,20 @@ class DashboardController extends Controller
             'usuarios' => User::count(),
         ];
 
-        $documentos_recientes = Documento::with(['user', 'coleccion'])
-            ->orderBy('created_at', 'desc')
-            ->limit(5)
-            ->get();
+        $query = Documento::with(['user', 'coleccion']);
+
+        if ($request->filled('q')) {
+            $query->where(function($q) use ($request) {
+                $q->where('titulo', 'like', '%' . $request->q . '%')
+                  ->orWhere('autor', 'like', '%' . $request->q . '%');
+            });
+        }
+        
+        if ($request->filled('estado')) {
+            $query->where('estado', $request->estado);
+        }
+
+        $documentos_recientes = $query->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
 
         return view('admin.dashboard', compact('stats', 'documentos_recientes'));
     }

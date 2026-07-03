@@ -58,8 +58,28 @@
 </div>
 
 <div class="card-custom">
-    <div class="card-header bg-white border-bottom py-3">
+    <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
         <h5 class="mb-0 fw-bold">Documentos Recientes</h5>
+    </div>
+    <div class="card-body bg-light border-bottom p-3">
+        <form method="GET" action="{{ route('admin.dashboard') }}" class="m-0">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <input type="text" name="q" class="form-control form-control-sm" placeholder="Buscar por título o autor..." value="{{ request('q') }}">
+                </div>
+                <div class="col-md-4">
+                    <select name="estado" class="form-select form-control-sm">
+                        <option value="">Todos los estados</option>
+                        <option value="publicado" {{ request('estado') == 'publicado' ? 'selected' : '' }}>Publicado</option>
+                        <option value="en_revisión" {{ request('estado') == 'en_revisión' ? 'selected' : '' }}>En Revisión</option>
+                        <option value="rechazado" {{ request('estado') == 'rechazado' ? 'selected' : '' }}>Rechazado</option>
+                    </select>
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button type="submit" class="btn btn-sm btn-primary-custom">Filtrar</button>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -105,7 +125,11 @@
             </table>
         </div>
     </div>
-    @if(count($documentos_recientes) > 0)
+    @if($documentos_recientes->hasPages())
+    <div class="card-footer bg-white border-top">
+        {{ $documentos_recientes->links('pagination::bootstrap-5') }}
+    </div>
+    @elseif(count($documentos_recientes) > 0)
     <div class="card-footer bg-white text-center py-3">
         <a href="{{ route('documentos.index') }}" class="text-decoration-none fw-medium">Ver todos los documentos <i class="bi bi-arrow-right ms-1"></i></a>
     </div>

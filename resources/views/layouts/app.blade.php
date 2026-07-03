@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Inicio') - Repositorio Digital ISTAE</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="{{ asset('images/logo.webp') }}">
+    
     <!-- Meta SEO -->
     <meta name="description" content="Repositorio Digital Institucional del Instituto Superior Tecnológico Alberto Enríquez.">
     
@@ -61,8 +64,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home') }}">
-                <i class="bi bi-book-half text-danger"></i>
-                <div>Repo<span>ISTAE</span></div>
+                <img src="{{ asset('images/logo.webp') }}" alt="Logo ISTAE" height="36" class="rounded bg-white p-1">
+                <div class="fw-bold">Repo<span>ISTAE</span></div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -134,8 +137,8 @@
             <div class="row g-4">
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center gap-2 mb-3">
-                        <i class="bi bi-book-half fs-4 text-danger"></i>
-                        <h4 class="text-white mb-0">RepoISTAE</h4>
+                        <img src="{{ asset('images/logo.webp') }}" alt="Logo ISTAE" height="48" class="rounded bg-white p-1">
+                        <h4 class="text-white mb-0 fw-bold">RepoISTAE</h4>
                     </div>
                     <p class="text-white-50">El Repositorio Digital Institucional del Instituto Superior Tecnológico Alberto Enríquez preserva, difunde y proporciona acceso a la producción académica y científica de nuestra institución.</p>
                 </div>
@@ -151,7 +154,7 @@
                 <div class="col-lg-4">
                     <h5 class="text-white mb-3">Contacto</h5>
                     <ul class="list-unstyled text-white-50 d-flex flex-column gap-2">
-                        <li><i class="bi bi-geo-alt me-2"></i> Atuntaqui, Imbabura - Ecuador</li>
+                        <li><i class="bi bi-geo-alt me-2"></i> San Lorenzo, Esmeraldas - Ecuador</li>
                         <li><i class="bi bi-envelope me-2"></i> repositorio@istae.edu.ec</li>
                         <li><i class="bi bi-globe me-2"></i> <a href="https://www.istae.edu.ec" target="_blank">www.istae.edu.ec</a></li>
                     </ul>

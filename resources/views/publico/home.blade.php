@@ -66,7 +66,7 @@
         <div class="row g-4">
             @foreach($comunidades as $comunidad)
             <div class="col-md-6 col-lg-3 animate-fade-in" style="animation-delay: {{ $loop->index * 0.1 }}s">
-                <a href="{{ route('comunidades') }}" class="text-decoration-none">
+                <a href="{{ route('comunidad.publica', $comunidad->id) }}" class="text-decoration-none">
                     <div class="card-custom p-4 d-flex flex-column h-100">
                         <div class="card-icon-wrapper {{ $loop->index % 2 == 0 ? 'bg-blue-light' : 'bg-red-light' }}">
                             @if($comunidad->nombre == 'Trabajos de Titulación')
