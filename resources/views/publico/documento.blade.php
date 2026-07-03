@@ -72,6 +72,16 @@
                         <th class="bg-light text-muted fw-bold">Tipo de Documento</th>
                         <td>{{ $documento->tipo_documento }}</td>
                     </tr>
+                    @if(!empty($documento->palabras_clave))
+                    <tr>
+                        <th class="bg-light text-muted fw-bold">Palabras Clave</th>
+                        <td>
+                            @foreach(explode(';', str_replace(',', ';', $documento->palabras_clave)) as $keyword)
+                                <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    @endif
                     <tr>
                         <th class="bg-light text-muted fw-bold">Fecha de Publicación</th>
                         <td>{{ \Carbon\Carbon::parse($documento->fecha_publicacion)->format('d/m/Y') }}</td>

@@ -42,6 +42,13 @@
                     <textarea class="form-control form-control-custom @error('resumen') is-invalid @enderror" id="resumen" name="resumen" rows="5" required>{{ old('resumen', $documento->resumen) }}</textarea>
                     @error('resumen') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
+
+                <div class="col-12">
+                    <label for="palabras_clave" class="form-label fw-medium">Palabras Clave</label>
+                    <input type="text" class="form-control form-control-custom @error('palabras_clave') is-invalid @enderror" id="palabras_clave" name="palabras_clave" placeholder="Ej: desarrollo web, repositorio, dspace" value="{{ old('palabras_clave', $documento->palabras_clave) }}">
+                    <div class="form-text">Separe múltiples palabras clave con punto y coma (;) o comas. (Opcional)</div>
+                    @error('palabras_clave') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
             </div>
 
             <h5 class="fw-bold text-dark border-bottom pb-2 mb-4">2. Clasificación</h5>

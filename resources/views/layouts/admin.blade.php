@@ -45,7 +45,7 @@
     </script>
     <style>
         .sidebar {
-            background-color: var(--primary-blue);
+            background-color: var(--primary-blue) !important;
         }
         @media (min-width: 768px) {
             .sidebar {
@@ -126,7 +126,7 @@
                     <hr class="border-secondary">
                 </li>
                 <li>
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.configuracion.index') }}" class="nav-link {{ request()->routeIs('admin.configuracion.*') ? 'active' : '' }}">
                         <i class="bi bi-gear me-2"></i> Configuración
                     </a>
                 </li>
@@ -136,8 +136,12 @@
             <div class="d-flex justify-content-between align-items-center mt-auto pb-2">
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle px-2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="bg-secondary rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 32px; height: 32px;">
-                            <i class="bi bi-person"></i>
+                        <div class="bg-secondary rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 32px; height: 32px; overflow: hidden;">
+                            @if(Auth::user()->avatar)
+                                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                            @else
+                                <i class="bi bi-person"></i>
+                            @endif
                         </div>
                         <strong>{{ explode(' ', Auth::user()->nombre)[0] }}</strong>
                     </a>

@@ -74,8 +74,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <form class="d-flex ms-lg-3" role="search" action="{{ route('busqueda') }}" method="GET">
                     <div class="input-group">
-                        <input class="form-control border-secondary text-white bg-transparent" type="search" name="q" placeholder="Buscar repositorio..." aria-label="Search" value="{{ request('q') }}">
-                        <button class="btn btn-outline-light border-secondary" type="submit"><i class="bi bi-search"></i></button>
+                        <input class="form-control border-secondary bg-transparent text-body" type="search" name="q" placeholder="Buscar repositorio..." aria-label="Search" value="{{ request('q') }}">
+                        <button class="btn btn-outline-secondary border-secondary" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -100,8 +100,12 @@
                     @else
                         <div class="dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
-                                <div class="bg-blue-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                                    <i class="bi bi-person-fill"></i>
+                                <div class="bg-blue-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; overflow: hidden;">
+                                    @if(Auth::user()->avatar)
+                                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                                    @else
+                                        <i class="bi bi-person-fill"></i>
+                                    @endif
                                 </div>
                                 {{ explode(' ', Auth::user()->nombre)[0] }}
                             </a>

@@ -112,6 +112,16 @@
                         <label class="form-label fw-medium">Correo Electrónico</label>
                         <input type="email" name="email" class="form-control form-control-custom" required>
                     </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium">Cédula</label>
+                            <input type="text" name="cedula" class="form-control form-control-custom" placeholder="Opcional">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium">Carrera</label>
+                            <input type="text" name="carrera" class="form-control form-control-custom" placeholder="Opcional">
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label fw-medium">Contraseña Inicial</label>
                         <input type="password" name="password" class="form-control form-control-custom" required minlength="8">
@@ -158,6 +168,16 @@
                         <div class="mb-3">
                             <label class="form-label fw-medium">Correo Electrónico</label>
                             <input type="email" name="email" class="form-control form-control-custom" value="{{ $usuario->email }}" required>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Cédula</label>
+                                <input type="text" name="cedula" class="form-control form-control-custom" value="{{ $usuario->cedula }}" placeholder="Opcional">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">Carrera</label>
+                                <input type="text" name="carrera" class="form-control form-control-custom" value="{{ $usuario->carrera }}" placeholder="Opcional">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-medium">Nueva Contraseña</label>

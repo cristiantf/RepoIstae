@@ -13,8 +13,12 @@
         <!-- Panel de Información del Usuario -->
         <div class="col-lg-4">
             <div class="card border-0 shadow-sm rounded-4 text-center p-4 h-100">
-                <div class="bg-blue-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
-                    <i class="bi bi-person-fill text-primary-custom" style="font-size: 3rem;"></i>
+                <div class="bg-blue-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px; overflow: hidden;">
+                    @if($user->avatar)
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                    @else
+                        <i class="bi bi-person-fill text-primary-custom" style="font-size: 3rem;"></i>
+                    @endif
                 </div>
                 <h3 class="fw-bold text-dark mb-1">{{ $user->nombre }}</h3>
                 <p class="text-muted mb-3">{{ $user->email }}</p>
@@ -129,6 +133,61 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+
+            <!-- Configuración de Cuenta -->
+            <div class="card border-0 shadow-sm rounded-4 mt-4">
+                <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
+                    <h5 class="fw-bold mb-0 text-primary-custom"><i class="bi bi-gear me-2"></i> Configuración de Cuenta</h5>
+                </div>
+                <div class="card-body p-4">
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('perfil.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Foto de Perfil</label>
+                            <input type="file" name="avatar" class="form-control" accept="image/*">
+                            <div class="form-text">Formatos permitidos: JPG, PNG, WEBP. Tamaño máximo: 2MB.</div>
+                        </div>
+
+                        <hr class="border-secondary opacity-25 my-4">
+
+                        <h6 class="fw-bold mb-3">Cambiar Contraseña (Opcional)</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Contraseña Actual</label>
+                                <input type="password" name="current_password" class="form-control" placeholder="Requerida solo si deseas cambiarla">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nueva Contraseña</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Confirmar Nueva Contraseña</label>
+                                <input type="password" name="password_confirmation" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-end">
+                            <button type="submit" class="btn btn-primary-custom fw-bold px-4">Guardar Cambios</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

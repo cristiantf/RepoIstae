@@ -18,7 +18,8 @@ class BusquedaController extends Controller
             $query->where(function ($qBuilder) use ($q) {
                 $qBuilder->where('titulo', 'like', '%' . $q . '%')
                          ->orWhere('autor', 'like', '%' . $q . '%')
-                         ->orWhere('resumen', 'like', '%' . $q . '%');
+                         ->orWhere('resumen', 'like', '%' . $q . '%')
+                         ->orWhere('palabras_clave', 'like', '%' . $q . '%');
             });
         }
 
@@ -45,7 +46,8 @@ class BusquedaController extends Controller
             $baseQuery->where(function ($qBuilder) use ($q) {
                 $qBuilder->where('titulo', 'like', '%' . $q . '%')
                          ->orWhere('autor', 'like', '%' . $q . '%')
-                         ->orWhere('resumen', 'like', '%' . $q . '%');
+                         ->orWhere('resumen', 'like', '%' . $q . '%')
+                         ->orWhere('palabras_clave', 'like', '%' . $q . '%');
             });
         }
 

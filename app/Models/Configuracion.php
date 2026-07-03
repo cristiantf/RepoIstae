@@ -8,6 +8,8 @@ class Configuracion extends Model
 {
     protected $table = 'configuraciones';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'clave',
         'valor',

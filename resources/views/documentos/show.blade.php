@@ -64,6 +64,17 @@
                     <div class="col-sm-3 text-muted fw-medium">Tipo Doc.</div>
                     <div class="col-sm-9">{{ $documento->tipo_documento }}</div>
                 </div>
+                @if(!empty($documento->palabras_clave))
+                <hr class="border-secondary opacity-10">
+                <div class="row mb-3">
+                    <div class="col-sm-3 text-muted fw-medium">Palabras Clave</div>
+                    <div class="col-sm-9">
+                        @foreach(explode(';', str_replace(',', ';', $documento->palabras_clave)) as $keyword)
+                            <span class="badge bg-secondary me-1">{{ trim($keyword) }}</span>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
                 <hr class="border-secondary opacity-10">
                 <div class="row mb-3">
                     <div class="col-sm-12 text-muted fw-medium mb-2">Resumen / Abstract</div>

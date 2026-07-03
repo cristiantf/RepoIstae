@@ -20,6 +20,7 @@ CREATE TABLE users (
     nombre              VARCHAR(150) NOT NULL COMMENT 'Nombre completo del usuario',
     email               VARCHAR(255) NOT NULL UNIQUE COMMENT 'Email institucional',
     password            VARCHAR(255) NOT NULL COMMENT 'Hash bcrypt de la contraseña',
+    avatar              VARCHAR(255) NULL COMMENT 'Ruta de la foto de perfil',
     rol                 ENUM('admin','bibliotecario','docente','estudiante') NOT NULL DEFAULT 'estudiante',
     carrera             VARCHAR(200) NULL COMMENT 'Carrera a la que pertenece',
     cedula              VARCHAR(20) NULL COMMENT 'Número de cédula ecuatoriana',
@@ -239,6 +240,9 @@ INSERT INTO configuraciones (clave, valor, descripcion) VALUES
 ('max_tamano_archivo_mb', '50', 'Tamaño máximo de archivo en MB'),
 ('descargas_publicas', '1', '1=descarga libre, 0=solo visualización'),
 ('registro_abierto', '1', '1=cualquiera puede registrarse, 0=solo por invitación'),
+('validacion_admin_registro', '0', '1=las cuentas nuevas requieren aprobación, 0=no requieren'),
+('subida_estudiantes', '1', '1=estudiantes pueden subir documentos, 0=no pueden'),
+('subida_docentes', '1', '1=docentes pueden subir documentos, 0=no pueden'),
 ('color_primario', '#1a3c6e', 'Color primario del tema (azul ISTAE)'),
 ('color_secundario', '#c8102e', 'Color secundario del tema');
 

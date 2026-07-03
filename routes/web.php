@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
     // Perfil de Usuario
     Route::get('/perfil', [\App\Http\Controllers\PerfilController::class, 'index'])->name('perfil.index');
+    Route::put('/perfil', [\App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
 
     // Módulo de Documentos (Todos los autenticados)
     Route::resource('documentos', \App\Http\Controllers\DocumentoController::class);
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
         // Rutas solo para super admin
         Route::middleware('role:admin')->group(function () {
             Route::resource('usuarios', \App\Http\Controllers\Admin\UsuarioController::class);
+            Route::get('configuracion', [\App\Http\Controllers\Admin\ConfiguracionController::class, 'index'])->name('configuracion.index');
+            Route::put('configuracion', [\App\Http\Controllers\Admin\ConfiguracionController::class, 'update'])->name('configuracion.update');
         });
     });
 

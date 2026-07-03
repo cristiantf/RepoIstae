@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Documento;
 use App\Models\Coleccion;
 use App\Models\Metadato;
+use App\Models\Configuracion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -41,17 +42,38 @@ class DocumentoController extends Controller
 
     public function create()
     {
+        $user = Auth::user();
+        if ($user->rol === 'estudiante') {
+            $allow = Configuracion::where('clave', 'subida_estudiantes')->value('valor') ?? '1';
+            if ($allow === '0') return redirect()->route('documentos.index')->withErrors(['error' => 'La subida de documentos para estudiantes está deshabilitada temporalmente.']);
+        }
+        if ($user->rol === 'docente') {
+            $allow = Configuracion::where('clave', 'subida_docentes')->value('valor') ?? '1';
+            if ($allow === '0') return redirect()->route('documentos.index')->withErrors(['error' => 'La subida de documentos para docentes está deshabilitada temporalmente.']);
+        }
+
         $colecciones = Coleccion::with('comunidad')->where('activo', 1)->get()->groupBy('comunidad.nombre');
         return view('documentos.create', compact('colecciones'));
     }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        if ($user->rol === 'estudiante') {
+            $allow = Configuracion::where('clave', 'subida_estudiantes')->value('valor') ?? '1';
+            if ($allow === '0') return redirect()->route('documentos.index')->withErrors(['error' => 'La subida de documentos para estudiantes está deshabilitada temporalmente.']);
+        }
+        if ($user->rol === 'docente') {
+            $allow = Configuracion::where('clave', 'subida_docentes')->value('valor') ?? '1';
+            if ($allow === '0') return redirect()->route('documentos.index')->withErrors(['error' => 'La subida de documentos para docentes está deshabilitada temporalmente.']);
+        }
+
         $validated = $request->validate([
             'coleccion_id' => 'required|exists:colecciones,id',
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'resumen' => 'required|string',
+            'palabras_clave' => 'nullable|string|max:500',
             'fecha_publicacion' => 'required|date',
             'tipo_documento' => 'required|string',
             'archivo' => 'required|file|mimes:pdf|max:51200', // max 50MB
@@ -67,6 +89,7 @@ class DocumentoController extends Controller
             'titulo' => $validated['titulo'],
             'autor' => $validated['autor'],
             'resumen' => $validated['resumen'],
+            'palabras_clave' => $validated['palabras_clave'] ?? null,
             'fecha_publicacion' => $validated['fecha_publicacion'],
             'tipo_documento' => $validated['tipo_documento'],
             'archivo_nombre' => $file->getClientOriginalName(),
@@ -117,6 +140,7 @@ class DocumentoController extends Controller
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'resumen' => 'required|string',
+            'palabras_clave' => 'nullable|string|max:500',
             'fecha_publicacion' => 'required|date',
             'tipo_documento' => 'required|string|max:50',
             'coleccion_id' => 'required|exists:colecciones,id',
