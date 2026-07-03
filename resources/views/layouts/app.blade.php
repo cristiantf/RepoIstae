@@ -44,10 +44,13 @@
                 </form>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active fw-bold' : '' }}" href="{{ route('home') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Comunidades</a>
+                        <a class="nav-link {{ request()->routeIs('comunidades') || request()->routeIs('coleccion.publica') ? 'active fw-bold' : '' }}" href="{{ route('comunidades') }}">Comunidades y Colecciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('estadisticas') ? 'active fw-bold' : '' }}" href="{{ route('estadisticas') }}">Estadísticas</a>
                     </li>
                 </ul>
                 

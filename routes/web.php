@@ -13,6 +13,11 @@ Route::get('/', [\App\Http\Controllers\PublicoController::class, 'home'])->name(
 Route::get('/buscar', [\App\Http\Controllers\BusquedaController::class, 'index'])->name('busqueda');
 Route::get('/documento/{id}', [\App\Http\Controllers\BusquedaController::class, 'show'])->name('documento.publico');
 
+// Módulo de Exploración y Estadísticas
+Route::get('/comunidades', [\App\Http\Controllers\ExplorarController::class, 'comunidades'])->name('comunidades');
+Route::get('/coleccion/{id}', [\App\Http\Controllers\ExplorarController::class, 'coleccion'])->name('coleccion.publica');
+Route::get('/estadisticas', [\App\Http\Controllers\EstadisticaController::class, 'index'])->name('estadisticas');
+
 // Autenticación
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

@@ -86,22 +86,28 @@
             </div>
         </div>
 
-        @if(in_array(auth()->user()->rol, ['admin', 'bibliotecario']) && $documento->estado === 'en_revisión')
+        @if(in_array(auth()->user()->rol, ['admin', 'bibliotecario']))
         <div class="card-custom border-primary border">
             <div class="card-header bg-primary text-white py-3">
-                <h5 class="fw-bold mb-0"><i class="bi bi-check-circle me-2"></i> Revisión</h5>
+                <h5 class="fw-bold mb-0"><i class="bi bi-shield-lock me-2"></i> Gestión de Estado</h5>
             </div>
             <div class="card-body p-4">
-                <p class="small text-muted mb-4">Como revisor, valida que el documento cumpla con los estándares institucionales antes de publicarlo abiertamente.</p>
+                <p class="small text-muted mb-4">Como administrador o bibliotecario, puedes cambiar el estado de visibilidad de este documento en cualquier momento.</p>
                 <form action="{{ route('documentos.update', $documento->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+                    
+                    <div class="mb-3">
+                        <select name="estado" class="form-select">
+                            <option value="en_revisión" {{ $documento->estado == 'en_revisión' ? 'selected' : '' }}>En Revisión (Oculto)</option>
+                            <option value="publicado" {{ $documento->estado == 'publicado' ? 'selected' : '' }}>Publicado (Visible a todos)</option>
+                            <option value="rechazado" {{ $documento->estado == 'rechazado' ? 'selected' : '' }}>Rechazado (Oculto/Requiere corrección)</option>
+                        </select>
+                    </div>
+                    
                     <div class="d-grid gap-2">
-                        <button type="submit" name="estado" value="publicado" class="btn btn-success fw-bold">
-                            Aprobar y Publicar
-                        </button>
-                        <button type="submit" name="estado" value="rechazado" class="btn btn-outline-danger fw-bold">
-                            Rechazar Documento
+                        <button type="submit" class="btn btn-primary-custom fw-bold">
+                            Guardar Estado
                         </button>
                     </div>
                 </form>
