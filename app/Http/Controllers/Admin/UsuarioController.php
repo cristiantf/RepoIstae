@@ -35,9 +35,18 @@ class UsuarioController extends Controller
     public function update(Request $request, User $usuario)
     {
         $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $usuario->id,
+            'password' => 'nullable|string|min:8',
             'rol' => 'required|in:admin,bibliotecario,docente,estudiante',
             'activo' => 'boolean',
         ]);
+
+        if (!empty($validated['password'])) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
 
         $validated['activo'] = $request->has('activo') ? 1 : 0;
 
