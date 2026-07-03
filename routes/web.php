@@ -30,6 +30,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
+    // Perfil de Usuario
+    Route::get('/perfil', [\App\Http\Controllers\PerfilController::class, 'index'])->name('perfil.index');
+
     // Módulo de Documentos (Todos los autenticados)
     Route::resource('documentos', \App\Http\Controllers\DocumentoController::class);
 

@@ -9,6 +9,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
+    <!-- Theme Switcher Script -->
+    <script>
+        const getPreferredTheme = () => {
+            const storedTheme = localStorage.getItem('theme')
+            if (storedTheme) {
+                return storedTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        const setTheme = theme => {
+            document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+        setTheme(getPreferredTheme())
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggleBtn')
+            if (themeToggle) {
+                const updateIcon = () => {
+                    const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                    themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars-fill text-dark"></i>'
+                }
+                updateIcon()
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+                    localStorage.setItem('theme', newTheme)
+                    setTheme(newTheme)
+                    updateIcon()
+                })
+            }
+        })
+    </script>
     <style>
         .sidebar {
             min-height: 100vh;
@@ -76,23 +109,29 @@
             @endif
         </ul>
         <hr class="border-secondary mt-auto" style="margin-top: auto;">
-        <div class="dropdown mt-auto pb-3">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle px-2" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="bg-secondary rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 32px; height: 32px;">
-                    <i class="bi bi-person"></i>
-                </div>
-                <strong>{{ explode(' ', Auth::user()->nombre)[0] }}</strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="{{ route('home') }}">Ver Portal</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="dropdown-item text-danger">Cerrar sesión</button>
-                    </form>
-                </li>
-            </ul>
+        <div class="d-flex justify-content-between align-items-center mt-auto pb-3">
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle px-2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="bg-secondary rounded-circle d-flex justify-content-center align-items-center me-2" style="width: 32px; height: 32px;">
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <strong>{{ explode(' ', Auth::user()->nombre)[0] }}</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item" href="{{ route('perfil.index') }}">Mi Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{ route('home') }}">Ver Portal</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item text-danger">Cerrar sesión</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <button id="themeToggleBtn" class="btn btn-outline-light border-0 rounded-circle me-2" style="width: 40px; height: 40px;" title="Cambiar tema">
+                <i class="bi bi-moon-stars-fill"></i>
+            </button>
         </div>
     </div>
 

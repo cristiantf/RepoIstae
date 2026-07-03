@@ -107,10 +107,10 @@
                 </div>
             </div>
 
-            <div class="card border-0 shadow-sm rounded-4 bg-primary-custom text-white">
+            <div class="card border-0 shadow-sm rounded-4 bg-light border border-secondary border-opacity-10">
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-quote me-2 text-danger"></i> Cómo citar</h5>
-                    <p class="small opacity-75 mb-0" style="user-select: all;">
+                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-quote me-2 text-danger"></i> Cómo citar</h5>
+                    <p class="small text-muted mb-0" style="user-select: all;">
                         {{ $documento->autor }}. ({{ \Carbon\Carbon::parse($documento->fecha_publicacion)->format('Y') }}). <em>{{ $documento->titulo }}</em> [{{ $documento->tipo_documento }}]. Repositorio Institucional ISTAE. {{ route('documento.publico', $documento->id) }}
                     </p>
                 </div>

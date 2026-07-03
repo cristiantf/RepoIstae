@@ -22,8 +22,8 @@
                 </div>
                 
                 <div class="mt-4 animate-fade-in delay-200">
-                    <a href="#" class="text-white text-decoration-none me-4 opacity-75 hover-opacity-100"><i class="bi bi-sliders me-1"></i> Búsqueda Avanzada</a>
-                    <a href="#" class="text-white text-decoration-none opacity-75 hover-opacity-100"><i class="bi bi-collection me-1"></i> Explorar Colecciones</a>
+                    <a href="{{ route('busqueda') }}" class="text-white text-decoration-none me-4 opacity-75 hover-opacity-100"><i class="bi bi-sliders me-1"></i> Búsqueda Avanzada</a>
+                    <a href="{{ route('comunidades') }}" class="text-white text-decoration-none opacity-75 hover-opacity-100"><i class="bi bi-collection me-1"></i> Explorar Colecciones</a>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
                 <h2 class="fw-bold mb-1" style="color: var(--primary-blue);">Comunidades del Repositorio</h2>
                 <p class="text-muted mb-0">Explora la producción académica organizada por facultades y áreas temáticas.</p>
             </div>
-            <a href="#" class="btn btn-outline-primary d-none d-md-inline-flex align-items-center gap-2">
+            <a href="{{ route('comunidades') }}" class="btn btn-outline-primary d-none d-md-inline-flex align-items-center gap-2">
                 Ver todas <i class="bi bi-arrow-right"></i>
             </a>
         </div>
@@ -66,7 +66,7 @@
         <div class="row g-4">
             @foreach($comunidades as $comunidad)
             <div class="col-md-6 col-lg-3 animate-fade-in" style="animation-delay: {{ $loop->index * 0.1 }}s">
-                <a href="#" class="text-decoration-none">
+                <a href="{{ route('comunidades') }}" class="text-decoration-none">
                     <div class="card-custom p-4 d-flex flex-column h-100">
                         <div class="card-icon-wrapper {{ $loop->index % 2 == 0 ? 'bg-blue-light' : 'bg-red-light' }}">
                             @if($comunidad->nombre == 'Trabajos de Titulación')
@@ -105,7 +105,7 @@
                     <a href="{{ route('login') }}" class="btn btn-primary-custom px-4 py-2 me-2">Iniciar Sesión</a>
                     <a href="{{ route('register') }}" class="btn btn-outline-secondary px-4 py-2">Registrarse</a>
                 @else
-                    <a href="#" class="btn btn-accent-custom px-4 py-2"><i class="bi bi-cloud-arrow-up me-2"></i> Subir Documento</a>
+                    <a href="{{ route('documentos.create') }}" class="btn btn-accent-custom px-4 py-2"><i class="bi bi-cloud-arrow-up me-2"></i> Subir Documento</a>
                 @endguest
             </div>
         </div>

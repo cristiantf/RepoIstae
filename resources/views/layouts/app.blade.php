@@ -21,6 +21,39 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
+    <!-- Theme Switcher Script (Runs early to prevent flash) -->
+    <script>
+        const getPreferredTheme = () => {
+            const storedTheme = localStorage.getItem('theme')
+            if (storedTheme) {
+                return storedTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        const setTheme = theme => {
+            document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+        setTheme(getPreferredTheme())
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggleBtn')
+            if (themeToggle) {
+                const updateIcon = () => {
+                    const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                    themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars-fill"></i>'
+                }
+                updateIcon()
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-bs-theme')
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+                    localStorage.setItem('theme', newTheme)
+                    setTheme(newTheme)
+                    updateIcon()
+                })
+            }
+        })
+    </script>
 </head>
 <body>
 
@@ -55,6 +88,9 @@
                 </ul>
                 
                 <div class="d-flex align-items-center gap-3">
+                    <button id="themeToggleBtn" class="btn btn-outline-light border-0 rounded-circle" style="width: 40px; height: 40px;" title="Cambiar tema">
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
                     @guest
                         <a href="{{ route('login') }}" class="nav-link fw-semibold">Ingresar</a>
                         <a href="{{ route('register') }}" class="btn btn-accent-custom">Registrarse</a>
@@ -70,7 +106,8 @@
                                 @if(in_array(Auth::user()->rol, ['admin', 'bibliotecario']))
                                     <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
                                 @endif
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-folder me-2"></i>Mis Documentos</a></li>
+                                <li><a class="dropdown-item" href="{{ route('perfil.index') }}"><i class="bi bi-person-vcard me-2"></i>Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="{{ route('perfil.index') }}"><i class="bi bi-folder me-2"></i>Mis Documentos</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">

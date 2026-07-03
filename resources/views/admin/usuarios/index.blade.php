@@ -3,6 +3,9 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="fw-bold mb-0 text-primary-custom">Gestión de Usuarios</h2>
+    <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#createUserModal">
+        <i class="bi bi-person-plus me-1"></i> Crear Usuario
+    </button>
 </div>
 
 @if(session('success'))
@@ -124,4 +127,47 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Create -->
+<div class="modal fade" id="createUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow text-start">
+            <div class="modal-header bg-light border-bottom-0">
+                <h5 class="modal-title fw-bold">Registrar Nuevo Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.usuarios.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Nombre Completo</label>
+                        <input type="text" name="nombre" class="form-control form-control-custom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Correo Electrónico</label>
+                        <input type="email" name="email" class="form-control form-control-custom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Contraseña Inicial</label>
+                        <input type="password" name="password" class="form-control form-control-custom" required minlength="8">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Rol Institucional</label>
+                        <select name="rol" class="form-select form-control-custom" required>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="docente">Docente</option>
+                            <option value="bibliotecario">Bibliotecario</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary-custom">Crear Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection

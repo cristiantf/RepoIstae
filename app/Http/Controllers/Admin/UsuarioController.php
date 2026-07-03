@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -12,6 +13,23 @@ class UsuarioController extends Controller
     {
         $usuarios = User::orderBy('created_at', 'desc')->get();
         return view('admin.usuarios.index', compact('usuarios'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'rol' => 'required|in:admin,bibliotecario,docente,estudiante',
+        ]);
+
+        $validated['password'] = Hash::make($validated['password']);
+        $validated['activo'] = 1; // Activo por defecto
+
+        User::create($validated);
+
+        return redirect()->route('admin.usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function update(Request $request, User $usuario)
