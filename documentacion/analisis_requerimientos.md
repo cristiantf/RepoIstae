@@ -35,8 +35,8 @@ El sistema debe gestionar cinco roles diferenciados con permisos específicos:
 | **Visitante** | Solo consulta y descarga pública |
 
 **Hallazgos de entrevistas:**
-- La Rectora y la Coordinadora Académica enfatizan que el control de acceso es crítico.
-- El Ing. Salazar (Investigación) requiere que documentos confidenciales puedan restringirse.
+- El Mgtr. Palacios (Rectorado y Coordinación Académica) enfatiza que el control de acceso es crítico.
+- La MSc. Troya (Investigación) requiere que documentos confidenciales puedan restringirse.
 - Los coordinadores de carrera piden que el registro sea simple para los estudiantes.
 
 ---
@@ -188,7 +188,7 @@ Los coordinadores de Mecánica Automotriz y Mecanización Agrícola enfatizaron 
 ---
 
 ### RF-11 — Generación Automática de Cita Bibliográfica
-**Fuente:** Ing. Ortega (Mecanización Agrícola)  
+**Fuente:** MSc. Morales (Mecanización Agrícola)  
 **Prioridad:** C — Could Have  
 **Estado en el sistema:** ❌ No implementado (pendiente)
 
@@ -197,7 +197,7 @@ Generar cita en formato APA automáticamente desde los metadatos del documento.
 ---
 
 ### RF-12 — Restricción de Acceso por Documento
-**Fuente:** Ing. Espinoza (Mecánica Automotriz), Dpto. Investigación  
+**Fuente:** MSc. Guacha (Mecánica Automotriz), Dpto. Investigación  
 **Prioridad:** C — Could Have  
 **Estado en el sistema:** ❌ No implementado (pendiente)
 
@@ -241,7 +241,7 @@ Protocolo de interoperabilidad entre repositorios institucionales. Se planifica 
 ---
 
 ### RNF-03 — Responsividad / Acceso Móvil
-**Fuente:** Rectorado, Ing. Ortega (Mecanización Agrícola)  
+**Fuente:** Rectorado, MSc. Morales (Mecanización Agrícola)  
 **Prioridad:** M — Must Have
 
 - Funcional en celulares de gama media-baja.
@@ -269,7 +269,7 @@ Protocolo de interoperabilidad entre repositorios institucionales. Se planifica 
 ---
 
 ### RNF-05 — Disponibilidad
-**Fuente:** Rectorado, Ing. Espinoza (Mecánica Automotriz)  
+**Fuente:** Rectorado, MSc. Guacha (Mecánica Automotriz)  
 **Prioridad:** M — Must Have
 
 - Disponibilidad mínima: **99% mensual** (máx. 7.2 horas de inactividad/mes).
@@ -319,7 +319,7 @@ Protocolo de interoperabilidad entre repositorios institucionales. Se planifica 
 ---
 
 ### RNF-09 — Idioma
-**Fuente:** Ing. Ortega (Mecanización Agrícola)  
+**Fuente:** MSc. Morales (Mecanización Agrícola)  
 **Prioridad:** M — Must Have
 
 - Interfaz completamente en **español**.
@@ -375,10 +375,10 @@ Protocolo de interoperabilidad entre repositorios institucionales. Se planifica 
 
 | Riesgo | Origen | Mitigación |
 |---|---|---|
-| Bajo uso por falta de política institucional | Ing. Ortega | Definir reglamento de depósito obligatorio |
-| Falta de personal para aprobar documentos en periodos de vacaciones | Ing. Espinoza | Asignar múltiples bibliotecarios |
-| Estudiantes con poca experiencia tecnológica | MecAut, MecAgri | Crear guía de usuario y tutorial en video |
-| Documentos confidenciales de empresas | Ing. Espinoza | Implementar restricción de acceso (RF-12) |
+| Bajo uso por falta de política institucional | MSc. Morales | Definir reglamento de depósito obligatorio |
+| Falta de personal para aprobar documentos en periodos de vacaciones | MSc. Guacha | Asignar múltiples bibliotecarios |
+| Estudiantes con poca experiencia tecnológica | MSc. Guacha, MSc. Morales | Crear guía de usuario y tutorial en video |
+| Documentos confidenciales de empresas | MSc. Guacha | Implementar restricción de acceso (RF-12) |
 | Dependencia del equipo de desarrollo para mantenimiento | Rectorado | Documentación y capacitación al personal |
 
 ---
